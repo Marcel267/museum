@@ -1,8 +1,13 @@
+import { ModeToggle } from "@/components/mode-toggle"
+import { Button } from "@/components/ui/button"
+
 export default function Home() {
-  
+
   return (
-    <main className="container mx-auto p-5">
-     jvjdfhjkfjkdklfhsl
-    </main>
+    <>
+      <h1 className="text-3xl">Home</h1>
+      <Button>Cooler Button</Button>
+      {/* <ModeToggle /> */}
+    </>
   )
 }
