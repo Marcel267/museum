@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import {InputEmail} from "@/components/input-field";
+import {InputEmail, InputUsername, InputUserPassword} from "@/components/input-field";
 import RegisterTabs from "@/components/register-tabs";
 
 export default function LoginModal() {
@@ -18,8 +18,10 @@ export default function LoginModal() {
             <DialogTitle>
               <RegisterTabs/>
             </DialogTitle>
-            <DialogDescription>
+            <DialogDescription className="pt-3 flex-col space-y-3">
               <InputEmail/>
+              <InputUsername/>
+              <InputUserPassword/>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>

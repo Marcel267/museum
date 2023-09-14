@@ -2,7 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function RegisterTabs(){
   return(
-      <Tabs defaultValue="account" className="w-[400px]">
+      <Tabs defaultValue="anmelden" className="w-[400px]">
         <TabsList>
           <TabsTrigger value="anmelden">Anmelden</TabsTrigger>
           <TabsTrigger value="registrieren">Registrieren</TabsTrigger>
