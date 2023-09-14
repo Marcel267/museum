@@ -12,19 +12,37 @@ export default function Navbar() {
         // </nav>
         <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
             <div className="container flex h-14 items-center">
-                <div className="mr-4 hidden md:flex">
+                <div className="mr-4 flex">
                     <a className="mr-6 flex items-center space-x-2" href="/">
                         <Landmark />
                         <span className="hidden font-bold sm:inline-block">
-                            Museum
+                            Moroseum
                         </span>
                     </a>
                     <nav className="flex items-center space-x-6 text-sm font-medium">
                         <Link
+                            href={"/"}
+                            className="transition-colors hover:text-foreground/80 text-foreground/60"
+                        >
+                            Home
+                        </Link>
+                        <Link
                             href={"/about-us"}
                             className="transition-colors hover:text-foreground/80 text-foreground/60"
                         >
-                            Über unss
+                            Über uns
+                        </Link>
+                        <Link
+                            href={"/service"}
+                            className="transition-colors hover:text-foreground/80 text-foreground/60"
+                        >
+                            Service
+                        </Link>
+                        <Link
+                            href={"/forum"}
+                            className="transition-colors hover:text-foreground/80 text-foreground/60"
+                        >
+                            Forum
                         </Link>
                     </nav>
                 </div>
