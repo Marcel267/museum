@@ -24,7 +24,7 @@ export default function Navbar() {
                             href={"/about-us"}
                             className="transition-colors hover:text-foreground/80 text-foreground/60"
                         >
-                            Über uns
+                            Über unss
                         </Link>
                     </nav>
                 </div>
