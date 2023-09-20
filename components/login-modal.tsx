@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import {InputEmail, InputUsername, InputUserPassword} from "@/components/input-field";
+import {InputEmail, InputUsername, InputUserPassword, InputUserPasswordAgain} from "@/components/input-field";
 import RegisterTabs from "@/components/register-tabs";
 import { Button } from "./ui/button";
 
@@ -23,12 +23,10 @@ export default function LoginModal() {
               <InputEmail/>
               <InputUsername/>
               <InputUserPassword/>
+              <InputUserPasswordAgain/>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
       </Dialog>
   )
 }
-
-
-

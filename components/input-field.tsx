@@ -17,3 +17,9 @@ export function InputUserPassword() {
       <Input type="userpassword" placeholder="Passwort" />
   )
 }
+
+export function InputUserPasswordAgain() {
+  return(
+      <Input type="userpasswordagain" placeholder="Passwort wiederholen" />
+  )
+}
