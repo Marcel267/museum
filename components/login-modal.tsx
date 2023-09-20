@@ -19,11 +19,7 @@ export default function LoginModal() {
             <DialogTitle>
               <RegisterTabs/>
             </DialogTitle>
-            <DialogDescription className="pt-3 flex-col space-y-3">
-              <InputEmail/>
-              <InputUsername/>
-              <InputUserPassword/>
-              <InputUserPasswordAgain/>
+            <DialogDescription>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
