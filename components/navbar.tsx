@@ -4,49 +4,47 @@ import { ModeToggle } from "./mode-toggle";
 import { Landmark } from "lucide-react";
 
 export default function Navbar() {
-    return (
-        // <nav classNameName="bg-zinc-900 p-4 flex justify-between flex-col md:flex-row sticky top-0 drop-shadow-xl">
-        //   <h1 classNameName="text-3xl font-bold text-white grid place-content-center mb-2 md:mb-0">
-        //     <Link href={"/"}>Museum</Link>
-        //   </h1>
-        // </nav>
-        <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
-            <div className="container flex h-14 items-center">
-                <div className="mr-4 flex">
-                    <a className="mr-6 flex items-center space-x-2" href="/">
-                        <Landmark />
-                        <span className="hidden font-bold sm:inline-block">
-                            Moroseum
-                        </span>
-                    </a>
-                    <nav className="flex items-center space-x-6 text-sm font-medium">
-                        <Link
-                            href={"/"}
-                            className="transition-colors hover:text-foreground/80 text-foreground/60"
-                        >
-                            Home
-                        </Link>
-                        <Link
-                            href={"/about-us"}
-                            className="transition-colors hover:text-foreground/80 text-foreground/60"
-                        >
-                            Über uns
-                        </Link>
-                        <Link
-                            href={"/service"}
-                            className="transition-colors hover:text-foreground/80 text-foreground/60"
-                        >
-                            Service
-                        </Link>
-                        <Link
-                            href={"/forum"}
-                            className="transition-colors hover:text-foreground/80 text-foreground/60"
-                        >
-                            Forum
-                        </Link>
-                    </nav>
-                </div>
-                {/* <button
+  return (
+    // <nav classNameName="bg-zinc-900 p-4 flex justify-between flex-col md:flex-row sticky top-0 drop-shadow-xl">
+    //   <h1 classNameName="text-3xl font-bold text-white grid place-content-center mb-2 md:mb-0">
+    //     <Link href={"/"}>Museum</Link>
+    //   </h1>
+    // </nav>
+    <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
+      <div className="container flex h-14 items-center">
+        <div className="mr-4 flex">
+          <a className="mr-6 flex items-center space-x-2" href="/">
+            <Landmark />
+            <span className="hidden font-bold sm:inline-block">Moroseum</span>
+          </a>
+          <nav className="flex items-center space-x-6 text-sm font-medium">
+            <Link
+              href={"/"}
+              className="text-foreground/60 transition-colors hover:text-foreground/80"
+            >
+              Home
+            </Link>
+            <Link
+              href={"/about-us"}
+              className="text-foreground/60 transition-colors hover:text-foreground/80"
+            >
+              Über uns
+            </Link>
+            <Link
+              href={"/service"}
+              className="text-foreground/60 transition-colors hover:text-foreground/80"
+            >
+              Service
+            </Link>
+            <Link
+              href={"/forum"}
+              className="text-foreground/60 transition-colors hover:text-foreground/80"
+            >
+              Forum
+            </Link>
+          </nav>
+        </div>
+        {/* <button
                     className="bg-red-200 inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 py-2 mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
                     type="button"
                     aria-haspopup="dialog"
@@ -71,12 +69,12 @@ export default function Navbar() {
                     </svg>
                     <span className="sr-only">Toggle Menu</span>
                 </button> */}
-                <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-                    <nav className="flex items-center">
-                        <ModeToggle />
-                    </nav>
-                </div>
-            </div>
-        </header>
-    );
+        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+          <nav className="flex items-center">
+            <ModeToggle />
+          </nav>
+        </div>
+      </div>
+    </header>
+  );
 }
