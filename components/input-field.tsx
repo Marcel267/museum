@@ -1,4 +1,5 @@
 import { Input } from "@/components/ui/input"
+import EyeShown from "./eye-shown"
 
 export function InputEmail() {
   return(
@@ -21,5 +22,11 @@ export function InputUserPassword() {
 export function InputUserPasswordAgain() {
   return(
       <Input type="userpasswordagain" placeholder="Passwort wiederholen" />
+  )
+}
+
+export function InputUsernameOrEmail() {
+  return(
+      <Input type="useroremail" placeholder="Email/Nutzername" />
   )
 }
