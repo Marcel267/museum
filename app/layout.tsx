@@ -2,7 +2,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+import { SiteHeader } from "@/components/site-header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
-          <main className="container mx-auto p-5">{children}</main>
+          <SiteHeader />
+          <main className="container mx-auto min-h-[calc(100vh-122px)] p-5">
+            {children}
+          </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
