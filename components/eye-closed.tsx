@@ -1,9 +1,9 @@
 import { EyeOff } from 'lucide-react';
 
-const App = () => {
+const EyeClosed = () => {
   return (
     <EyeOff />
   );
 };
 
-export default App;
+export default EyeClosed;
