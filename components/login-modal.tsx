@@ -6,14 +6,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import {InputEmail, InputUsername, InputUserPassword, InputUserPasswordAgain} from "@/components/input-field";
 import RegisterTabs from "@/components/register-tabs";
-import { Button } from "./ui/button";
+import CustomAvatar from "@/components/customAvatar";
 
 export default function LoginModal() {
   return (
       <Dialog>
-        <DialogTrigger>Open</DialogTrigger>
+        <DialogTrigger><CustomAvatar/></DialogTrigger>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>
