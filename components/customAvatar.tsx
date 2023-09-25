@@ -3,8 +3,8 @@ import { Avatar as UIAvatar, AvatarFallback, AvatarImage } from "@/components/ui
 export default function CustomAvatar() {
   return (
       <UIAvatar>
-        <AvatarImage src="https://github.com/shadcn.png" />
-        <AvatarFallback>CN</AvatarFallback>
+        <AvatarImage src="" />
+        <AvatarFallback>+</AvatarFallback>
       </UIAvatar>
   );
 }
