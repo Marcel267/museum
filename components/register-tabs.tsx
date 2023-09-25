@@ -18,12 +18,11 @@ const EyeClosed = ({ togglePasswordVisibility, showPassword }: {togglePasswordVi
 const RegisterTabs = () => {
   const [passwordStates, setPasswordStates] = useState({
     showPassword1: false,
-    showPassword2: false,
-    showPassword3: false
+    showPassword2: false
   });
 
   const togglePasswordVisibility = (fieldName: string) => {
-    if (fieldName === 'showPassword1' || fieldName === 'showPassword2' || fieldName === 'showPassword3') {
+    if (fieldName === 'showPassword1' || fieldName === 'showPassword2') {
       setPasswordStates(prev => ({
         ...prev,
         [fieldName]: !prev[fieldName]
@@ -60,10 +59,10 @@ const RegisterTabs = () => {
           />
         </div>
         <div className="relative">
-          <Input type={passwordStates.showPassword3 ? 'text' : 'password'} placeholder="Passwort wiederholen" />
+          <Input type={passwordStates.showPassword2 ? 'text' : 'password'} placeholder="Passwort wiederholen" />
           <EyeClosed 
-            togglePasswordVisibility={() => togglePasswordVisibility('showPassword3')} 
-            showPassword={passwordStates.showPassword3} 
+            togglePasswordVisibility={() => togglePasswordVisibility('showPassword2')}
+            showPassword={passwordStates.showPassword2}
           />
         </div>
       </TabsContent>
