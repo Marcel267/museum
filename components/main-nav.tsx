@@ -45,7 +45,7 @@ export function MainNav() {
         >
           Service
         </Link>
-        <Link
+        {/* <Link
           href={"/forum"}
           className={cn(
             "flex items-center text-sm font-medium text-muted-foreground",
@@ -54,7 +54,7 @@ export function MainNav() {
           onClick={() => setPathname("/forum")}
         >
           Forum
-        </Link>
+        </Link> */}
       </nav>
     </div>
   );
