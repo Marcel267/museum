@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Image alt="Museumsgebäude" width={500}
-        height={500} src={"@/public/head_gebaeude_fassade_900_0.jpg"} />
+        height={500} src={"/public/gebaeude.jpg"} />
     </>
   )
 }
