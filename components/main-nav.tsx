@@ -10,7 +10,11 @@ export function MainNav() {
   const [pathname, setPathname] = React.useState(usePathname());
   return (
     <div className="flex gap-6 md:gap-10">
-      <Link href="/" className="flex items-center space-x-2">
+      <Link
+        href={"/"}
+        className="flex items-center space-x-2"
+        onClick={() => setPathname("/")}
+      >
         <Landmark className="h-6 w-6" />
         <span className="inline-block font-bold">Moroseum</span>
       </Link>
