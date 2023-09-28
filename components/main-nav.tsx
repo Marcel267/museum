@@ -58,30 +58,30 @@ export function MainNav() {
             {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
             {/* <DropdownMenuSeparator /> */}
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Link
-                  href={"/exhibition-and-events"}
-                  className={cn(
-                    "flex items-center text-sm font-medium text-muted-foreground",
-                    pathname === "/exhibition-and-events" && "text-foreground",
-                  )}
-                  onClick={() => setPathname("/exhibition-and-events")}
-                >
+              <Link
+                href={"/exhibition-and-events"}
+                className={cn(
+                  "flex items-center text-sm font-medium text-muted-foreground",
+                  pathname === "/exhibition-and-events" && "text-foreground",
+                )}
+                onClick={() => setPathname("/exhibition-and-events")}
+              >
+                <DropdownMenuItem className="w-full">
                   Austellungen & Veranstaltungen
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link
-                  href={"/prices-and-hours"}
-                  className={cn(
-                    "flex items-center text-sm font-medium text-muted-foreground",
-                    pathname === "/prices-and-hours" && "text-foreground",
-                  )}
-                  onClick={() => setPathname("/prices-and-hours")}
-                >
+                </DropdownMenuItem>
+              </Link>
+              <Link
+                href={"/prices-and-hours"}
+                className={cn(
+                  "flex items-center text-sm font-medium text-muted-foreground",
+                  pathname === "/prices-and-hours" && "text-foreground",
+                )}
+                onClick={() => setPathname("/prices-and-hours")}
+              >
+                <DropdownMenuItem className="w-full">
                   Preise & Öffnungszeiten
-                </Link>
-              </DropdownMenuItem>
+                </DropdownMenuItem>
+              </Link>
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
