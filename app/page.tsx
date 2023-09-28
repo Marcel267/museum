@@ -18,7 +18,7 @@ export default function Home() {
           height={500} src={buildingPic} />
       </div> */}
       <div className="mx-10 flex min-h-[calc(100vh-105px)] items-center justify-center">
-        <div className="mr-36">
+        <div className="sm:mr-16 md:mr-36">
           <h1 className="mb-5 bg-gradient-to-r from-black to-slate-500 bg-clip-text text-5xl font-bold tracking-tighter text-transparent dark:from-white dark:to-slate-400">
             Willkommen zu unserem Museum
           </h1>
@@ -35,9 +35,9 @@ export default function Home() {
           </div>
         </div>
         <Image
-          className="hidden rounded-md md:block"
+          className="hidden rounded-md sm:block sm:w-[300px] md:w-[500px]"
           alt="Museumsgebäude"
-          width={450}
+          // width={500}
           // height={500}
           src={buildingPic}
         />
