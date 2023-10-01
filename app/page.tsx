@@ -23,10 +23,10 @@ export default function Home() {
             Willkommen zu unserem Museum
           </h1>
           <span className="text-xl text-muted-foreground">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto,
-            eaque. Ut fuga rerum obcaecati laboriosam architecto cupiditate
-            adipisci dolorem voluptates vitae nostrum? Soluta earum molestias
-            distinctio facere atque dicta! Vero!
+            Treten Sie ein und tauchen Sie ein in die faszinierende Welt der
+            Steinzeit und Dinosaurier im Moroseum. Erleben Sie, wie Geschichte
+            hier zum Leben erweckt wird, und entdecken Sie die Wunder
+            vergangener Zeiten.
           </span>
           <div className="mt-5">
             <Button asChild>

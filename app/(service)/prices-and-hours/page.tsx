@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import calenderPic from "@/public/kalender.png";
+import calenderPic from "@/public/Oeffnungszeiten-2023-09.png";
+// import calenderPic from "@/public/kalender.png";
 
 export default function PricesAndHours() {
   return (
@@ -64,7 +65,7 @@ export default function PricesAndHours() {
             <li>Fr.: ab 17:00 - 22:00 Uhr</li>
           </ul>
           <Image
-            className="mt-7 rounded-md md:w-[500px]"
+            className="mt-7 rounded-md dark:bg-slate-100 md:w-[500px]"
             alt="Museumsgebäude"
             src={calenderPic}
           />
