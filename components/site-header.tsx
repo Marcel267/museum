@@ -5,6 +5,7 @@ import { Github } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 import { MainNav } from "./main-nav";
 import LoginModal from "@/components/login-modal";
+import CustomAvatar from "@/components/customAvatar";
 
 export function SiteHeader() {
   return (
@@ -13,7 +14,7 @@ export function SiteHeader() {
         <MainNav />
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
-            <LoginModal/>
+            <CustomAvatar/>
             <Link
               href={"https://github.com/Marcel267/museum"}
               target="_blank"

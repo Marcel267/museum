@@ -13,7 +13,7 @@ export default function LoginModal() {
   return (
     <Dialog>
       <DialogTrigger>
-        <CustomAvatar />
+        {/*Trigger Einfügen*/}
       </DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>
