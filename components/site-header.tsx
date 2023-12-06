@@ -1,13 +1,11 @@
 import Link from "next/link";
-
 import { buttonVariants } from "@/components/ui/button";
 import { Github } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 import { MainNav } from "./main-nav";
 import LoginModal from "@/components/login-modal";
-import CustomAvatar from "@/components/customAvatar";
 
-export function SiteHeader() {
+export async function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
