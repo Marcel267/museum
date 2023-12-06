@@ -6,17 +6,13 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import RegisterTabs from "@/components/register-tabs";
+import CustomAvatar from "@/components/customAvatar";
 
-interface LoginModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
+export default function LoginModal() {
   return (
-    <Dialog isOpen={isOpen} onClose={onClose}>
+    <Dialog>
       <DialogTrigger>
-        <button onClick={onClose}>Close Dialog</button>
+        <CustomAvatar />
       </DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>
