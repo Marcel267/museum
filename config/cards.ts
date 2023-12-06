@@ -50,7 +50,7 @@ export const EventsConfig: EventsConfig = {
     {
       src: virtual,
       alt: "virtual-Bild",
-      desc: "Virtuelle Führung durch das Museum",
+      desc: "Dienstags: Virtuelle Führung durch das Museum",
     },
     {
       src: dinos_aus_ton,
