@@ -56,7 +56,7 @@ export default function AboutUs() {
           <h2 className='text-xl font-bold mb-2'>6. Ihre Rechte</h2>
           <ul className='list-disc ml-8'>
             <li>Auskunft: Sie haben das Recht auf Auskunft über Ihre gespeicherten Daten.</li>
-            <li>Berichtigung: Sie können die Berichtigung unrichtiger Daten verlangen.</li>
+            <li>Berichtigung: Sie können die Berichtigung falsche Daten verlangen.</li>
             <li>Löschung: Sie können die Löschung Ihrer Daten verlangen, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.</li>
             <li>Widerspruch: Sie können der Verarbeitung Ihrer Daten jederzeit widersprechen.</li>
           </ul>
