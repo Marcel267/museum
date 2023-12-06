@@ -1,16 +1,17 @@
-import React from 'react'
+import React from "react";
 
 export default function AboutUs() {
   return (
-      <>
-        <div className='text-center'>
-          <h1 className='text-2xl'>Kontakt</h1>
-          <h2 className='text-1xl'> Moroseum Musem</h2>
-          <h2 className='text-1xl'> Museumstraße 1</h2>
-          <h2 className='text-1xl'> 13370 Museumshausen</h2>
-          <h2 className='text-1xl'> Telefon: (069) 09090</h2>
-          <h2 className='text-1xl'> E-Mail: info@moroseum.de</h2>
-        </div>
-      </>
-  )
+    <div className="mx-auto max-w-2xl text-center">
+      <br />
+      <br />
+      <h2 className="mb-2 text-xl font-bold">Moroseum Musem</h2>
+      <h2>Museumstraße 1</h2>
+      <h2>13370 Museumshausen</h2>
+      <h2>Telefon: (069) 09090</h2>
+      <h2>E-Mail: info@moroseum.de</h2>
+      <br />
+      <br />
+    </div>
+  );
 }
