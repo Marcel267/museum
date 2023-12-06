@@ -4,8 +4,6 @@ export default function AboutUs() {
   return (
       <div className="flex flex-col items-center justify-center h-screen">
       <h1 className='text-2xl'>Über uns</h1>
-          <div className="flex flex-col items-center justify-center h-screen">
-              <br/>
               <br/>
               <h2 className='text-l font-bold mb-2'>
                 Willkommen bei unserem Museum: Eine Reise in die Vergangenheit und die Welt des Wissens
@@ -52,8 +50,6 @@ export default function AboutUs() {
               <h2 className='text-Base font-bold mb-2'>
                   Ihr Moroseum Team
               </h2>
-
-          </div>
       </div>
   )
 }
