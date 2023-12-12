@@ -85,7 +85,16 @@ export function MainNav() {
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
-
+        <Link
+          href={"/profile"}
+          className={cn(
+            "flex items-center text-sm font-medium text-muted-foreground",
+            pathname === "/profile" && "text-foreground",
+          )}
+          onClick={() => setPathname("/profile")}
+        >
+          Profil
+        </Link>
         {/* <Link
           href={"/forum"}
           className={cn(

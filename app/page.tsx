@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import buildingPic from "../public/gebaeude_wasser1.jpg";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -33,12 +32,6 @@ export default function Home() {
             <Button asChild>
               <Link href="/about-us">Über uns</Link>
             </Button>
-            <Link
-              href="/api/auth/signout"
-              className={buttonVariants({ variant: "destructive" })}
-            >
-              Signout
-            </Link>
           </div>
         </div>
         <Image
