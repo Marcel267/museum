@@ -50,7 +50,14 @@ export function MainNav() {
         </Link>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <span className="flex cursor-pointer items-center text-sm font-medium text-muted-foreground">
+            <span
+              className={cn(
+                "flex items-center text-sm font-medium text-muted-foreground",
+                (pathname === "/exhibition-and-events" ||
+                  pathname === "/prices-and-hours") &&
+                  "text-foreground",
+              )}
+            >
               Service
             </span>
           </DropdownMenuTrigger>
