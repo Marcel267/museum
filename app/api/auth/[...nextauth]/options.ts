@@ -12,10 +12,10 @@ export const options: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: {
-          label: "Username",
-          type: "text",
-          placeholder: "Dein Nutzername",
+        email: {
+          label: "E-Mail",
+          type: "email",
+          placeholder: "Deine E-Mail",
         },
         password: {
           label: "Password",
@@ -27,13 +27,13 @@ export const options: NextAuthOptions = {
         // const user = { id: "1", name: "Marcel", password: "123abc" }; // Hardcoded
         const user = await prisma.user.findUnique({
           where: {
-            name: credentials?.username,
-          }, 
+            email: "marcel@email.de",
+          },
         });
-        console.log(user);
 
         if (
-          credentials?.username === user?.name &&
+          user &&
+          credentials?.email === user?.email &&
           credentials?.password === user?.password
         ) {
           return user;
