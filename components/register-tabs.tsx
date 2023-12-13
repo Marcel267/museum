@@ -6,6 +6,7 @@ import { Input } from "./ui/input";
 import { signIn } from "next-auth/react";
 import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
+// import { useRouter } from "next/navigation";
 
 // type LoginFormType = {
 //   email: string;
@@ -42,6 +43,7 @@ const RegisterTabs = () => {
     password2: "",
   });
   const [error, setError] = useState(false);
+  // const router = useRouter();
 
   const togglePasswordVisibility = (fieldName: string) => {
     if (fieldName === "showPassword1" || fieldName === "showPassword2") {
@@ -65,6 +67,8 @@ const RegisterTabs = () => {
       if (res.ok) {
         // setIsAdding(false);
         console.log("User angelegt");
+        // window.location.href = "/";
+        singIn(registerForm.email, registerForm.password1);
       } else {
         console.error("Failed to add user:", res.status, res.body);
       }
@@ -76,11 +80,15 @@ const RegisterTabs = () => {
 
   const handleSignIn = async (e: FormEvent) => {
     e.preventDefault();
+    singIn(loginForm.email, loginForm.password);
+  };
+
+  async function singIn(email: string, password: string) {
     const result = await signIn("credentials", {
       redirect: false,
       callbackUrl: "/",
-      email: loginForm.email,
-      password: loginForm.password,
+      email,
+      password,
     });
 
     if (result?.error) {
@@ -90,7 +98,7 @@ const RegisterTabs = () => {
       console.log("Erfolgreich angemeldet:", result);
     }
     console.log("handleSignIn called");
-  };
+  }
 
   function handleLoginFormEvent(event: ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
