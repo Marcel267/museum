@@ -39,7 +39,7 @@ export const options: NextAuthOptions = {
         // const user = { id: "1", name: "Marcel", password: "123abc" }; // Hardcoded
         const user = await prisma.user.findUnique({
           where: {
-            email: "marcel@email.de",
+            email: credentials?.email,
           },
         });
 
