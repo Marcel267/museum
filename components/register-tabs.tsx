@@ -4,13 +4,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Eye, EyeOff } from "lucide-react";
 import { Input } from "./ui/input";
 import { signIn } from "next-auth/react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { buttonVariants } from "./ui/button";
+import { cn } from "@/lib/utils";
 
-type LoginFormType = {
-  email: string;
-  password: string;
-};
+// type LoginFormType = {
+//   email: string;
+//   password: string;
+// };
 
 const EyeClosed = ({
   togglePasswordVisibility,
@@ -34,6 +34,14 @@ const RegisterTabs = () => {
     showPassword1: false,
     showPassword2: false,
   });
+  const [loginForm, setLoginForm] = useState({ email: "", password: "" });
+  const [registerForm, setRegisterForm] = useState({
+    email: "",
+    username: "",
+    password1: "",
+    password2: "",
+  });
+  const [error, setError] = useState(false);
 
   const togglePasswordVisibility = (fieldName: string) => {
     if (fieldName === "showPassword1" || fieldName === "showPassword2") {
@@ -44,11 +52,33 @@ const RegisterTabs = () => {
     }
   };
 
+  const handleRegister = async (e: FormEvent) => {
+    e.preventDefault();
+    console.log("handleRegister called");
+    console.log(registerForm);
+    try {
+      const res = await fetch(`/api/user`, {
+        method: "POST",
+        body: JSON.stringify(registerForm),
+      });
+
+      if (res.ok) {
+        // setIsAdding(false);
+        console.log("User angelegt");
+      } else {
+        console.error("Failed to add user:", res.status, res.body);
+      }
+      console.log(res);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   const handleSignIn = async (e: FormEvent) => {
     e.preventDefault();
-    // console.log(e.target.);
     const result = await signIn("credentials", {
       redirect: false,
+      callbackUrl: "/",
       email: loginForm.email,
       password: loginForm.password,
     });
@@ -58,23 +88,19 @@ const RegisterTabs = () => {
       setError(true);
     } else {
       console.log("Erfolgreich angemeldet:", result);
-      
     }
     console.log("handleSignIn called");
   };
 
-  function handleChangeEvent(event: ChangeEvent<HTMLInputElement>) {
+  function handleLoginFormEvent(event: ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
     setLoginForm({ ...loginForm, [name]: value });
   }
 
-  const handleRegister = async (e: FormEvent) => {
-    e.preventDefault();
-    console.log("handleRegister called");
-  };
-
-  const [loginForm, setLoginForm] = useState({ email: "", password: "" });
-  const [error, setError] = useState(false);
+  function handleRegisterFormEvent(event: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = event.target;
+    setRegisterForm({ ...registerForm, [name]: value });
+  }
 
   return (
     <Tabs defaultValue="anmelden">
@@ -89,7 +115,7 @@ const RegisterTabs = () => {
             type="email"
             placeholder="Email"
             name="email"
-            onChange={handleChangeEvent}
+            onChange={handleLoginFormEvent}
             value={loginForm.email}
           />
           <div className="relative">
@@ -97,7 +123,7 @@ const RegisterTabs = () => {
               type={passwordStates.showPassword1 ? "text" : "password"}
               placeholder="Passwort"
               name="password"
-              onChange={handleChangeEvent}
+              onChange={handleLoginFormEvent}
               value={loginForm.password}
             />
             <EyeClosed
@@ -108,12 +134,9 @@ const RegisterTabs = () => {
             />
           </div>
           {error && (
-            <div className="mt-2 text-destructive">
-              Falsche Zugangsdaten
-            </div>
+            <div className="mt-2 text-destructive">Falsche Zugangsdaten</div>
           )}
-          {/* entweder so und mit eingabetaste oder mit button */}
-          <input hidden type="submit" value="dsfasf" />
+          <input type="submit" value="Login" className={buttonVariants()} />
         </form>
       </TabsContent>
       <TabsContent value="registrieren">
@@ -121,12 +144,27 @@ const RegisterTabs = () => {
           <div style={{ marginBottom: "1rem" }}>
             Erstellen Sie hier Ihren Account
           </div>
-          <Input type="email" placeholder="Email" />
-          <Input type="text" placeholder="Nutzername" />
+          <Input
+            type="email"
+            placeholder="Email"
+            name="email"
+            onChange={handleRegisterFormEvent}
+            value={registerForm.email}
+          />
+          <Input
+            type="text"
+            placeholder="Nutzername"
+            name="username"
+            onChange={handleRegisterFormEvent}
+            value={registerForm.username}
+          />
           <div className="relative">
             <Input
               type={passwordStates.showPassword2 ? "text" : "password"}
               placeholder="Passwort"
+              name="password1"
+              onChange={handleRegisterFormEvent}
+              value={registerForm.password1}
             />
             <EyeClosed
               togglePasswordVisibility={() =>
@@ -139,6 +177,9 @@ const RegisterTabs = () => {
             <Input
               type={passwordStates.showPassword2 ? "text" : "password"}
               placeholder="Passwort wiederholen"
+              name="password2"
+              onChange={handleRegisterFormEvent}
+              value={registerForm.password2}
             />
             <EyeClosed
               togglePasswordVisibility={() =>
@@ -147,8 +188,12 @@ const RegisterTabs = () => {
               showPassword={passwordStates.showPassword2}
             />
           </div>
-          {/* entweder so und mit eingabetaste oder mit button */}
-          <input hidden type="submit" value="dsfasf" />
+          <input
+            hidden
+            type="submit"
+            value="Registrieren"
+            className={cn(buttonVariants(), "mt-3")}
+          />
         </form>
       </TabsContent>
     </Tabs>
