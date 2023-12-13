@@ -52,7 +52,7 @@ export function MainNav() {
           <DropdownMenuTrigger asChild>
             <span
               className={cn(
-                "flex items-center text-sm font-medium text-muted-foreground",
+                "flex cursor-pointer items-center text-sm font-medium text-muted-foreground",
                 (pathname === "/exhibition-and-events" ||
                   pathname === "/prices-and-hours") &&
                   "text-foreground",
