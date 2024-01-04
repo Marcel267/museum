@@ -21,7 +21,14 @@ export default function ExhibitionAndEvents() {
             <span className="flex justify-center">Jungsteinzeit</span>
           </div> */}
           {ExhibitionConfig.cards.map((card) => {
-            return <Card src={card.src} alt={card.alt} desc={card.desc} />;
+            return (
+              <Card
+                src={card.src}
+                alt={card.alt}
+                desc={card.desc}
+                key={card.src}
+              />
+            );
           })}
         </div>
       </div>
@@ -29,7 +36,14 @@ export default function ExhibitionAndEvents() {
       <div className="mb-10 flex items-center justify-center">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-20">
           {EventsConfig.cards.map((card) => {
-            return <Card src={card.src} alt={card.alt} desc={card.desc} />;
+            return (
+              <Card
+                src={card.src}
+                alt={card.alt}
+                desc={card.desc}
+                key={card.src}
+              />
+            );
           })}
         </div>
       </div>

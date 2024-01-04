@@ -3,8 +3,8 @@ import neandertaler from "../public/neandertaler.jpg";
 import dino_fuehrung from "../public/dino_fuehrung.png";
 import dinos_aus_ton from "../public/dinos_aus_ton.png";
 import erwachsenenabend from "../public/erwachsenenabend.png";
-import dinosaur from "../public/dinosaur.jpg"; 
-import unterwasserwelten from "../public/unterwasserwelten.jpg"
+import dinosaur from "../public/dinosaur.jpg";
+import unterwasserwelten from "../public/unterwasserwelten.jpg";
 import virtual from "../public/virtual.png";
 
 type ExhibitionConfig = {
@@ -45,7 +45,7 @@ export const EventsConfig: EventsConfig = {
     {
       src: dino_fuehrung,
       alt: "Dino-Fuehrung-Bild",
-      desc: "Montags & Mittwochs: Führung mit unserem kenner der Dinos",
+      desc: "Montags & Mittwochs: Führung mit unserem Kenner der Dinos",
     },
     {
       src: virtual,
