@@ -20,8 +20,8 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Todos
 
-- login mit eigenem modal
+- github login auf eigenem modal hinzufügen (und dann evt. nur eigenes modal benutzen anstatt nextauth login-seite)
+- ticketbestellsystem? (stripe)
+- über-uns seite etwas aufhübschen
+- code refactoren/polieren
 - profil seite ausfüllen
-- schrift auf about us page zu klein?
-- user anlegen?
-- ticketbestellsystem?
