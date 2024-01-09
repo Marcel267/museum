@@ -42,7 +42,8 @@ const RegisterTabs = () => {
     password1: "",
     password2: "",
   });
-  const [error, setError] = useState(false);
+  const [loginError, setLoginError] = useState(false);
+  const [registerError, setRegisterError] = useState("");
   // const router = useRouter();
 
   const togglePasswordVisibility = (fieldName: string) => {
@@ -69,8 +70,10 @@ const RegisterTabs = () => {
         console.log("User angelegt");
         // window.location.href = "/";
         singIn(registerForm.email, registerForm.password1);
+        setRegisterError("");
       } else {
-        console.error("Failed to add user:", res.status, res.body);
+        // console.error("Failed to add user:", res.status, res.body);
+        setRegisterError("User konnte nicht angelegt werden");
       }
       console.log(res);
     } catch (error) {
@@ -93,7 +96,7 @@ const RegisterTabs = () => {
 
     if (result?.error) {
       console.error("Fehler bei Anmeldung:", result.error);
-      setError(true);
+      setLoginError(true);
     } else {
       console.log("Erfolgreich angemeldet:", result);
     }
@@ -141,10 +144,14 @@ const RegisterTabs = () => {
               showPassword={passwordStates.showPassword1}
             />
           </div>
-          {error && (
+          {loginError && (
             <div className="mt-2 text-destructive">Falsche Zugangsdaten</div>
           )}
-          <input type="submit" value="Login" className={buttonVariants()} />
+          <input
+            type="submit"
+            value="Login"
+            className={cn(buttonVariants(), "w-full sm:w-fit")}
+          />
         </form>
       </TabsContent>
       <TabsContent value="registrieren">
@@ -196,11 +203,14 @@ const RegisterTabs = () => {
               showPassword={passwordStates.showPassword2}
             />
           </div>
+          {registerError.length > 0 && (
+            <div className="mt-2 text-destructive">{registerError}</div>
+          )}
           <input
             hidden
             type="submit"
             value="Registrieren"
-            className={cn(buttonVariants(), "mt-3")}
+            className={cn(buttonVariants(), "mt-3 w-full sm:w-fit")}
           />
         </form>
       </TabsContent>
