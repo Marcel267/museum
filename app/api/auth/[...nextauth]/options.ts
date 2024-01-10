@@ -35,8 +35,9 @@ export const options: NextAuthOptions = {
           placeholder: "Dein Passwort",
         },
       },
+      // @ts-ignore: weird type mismatch
       async authorize(credentials) {
-        // const user = { id: "1", name: "Marcel", password: "123abc" }; // Hardcoded
+        // const user = { id: "1", email: "marcel@email.de", password: "abc123" }; // Hardcoded
         const user = await prisma.user.findUnique({
           where: {
             email: credentials?.email,
