@@ -32,8 +32,8 @@ export function MainNav() {
       <div className="block sm:hidden">
         <Sheet>
           <SheetTrigger>
-            <Button variant="ghost" size="icon">
-              <Menu className="h-4 w-4" />
+            <Button asChild variant="ghost" size="icon">
+              <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
           <SheetContent side="left">
