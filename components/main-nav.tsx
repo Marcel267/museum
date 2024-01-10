@@ -33,7 +33,9 @@ export function MainNav() {
         <Sheet>
           <SheetTrigger>
             <Button asChild variant="ghost" size="icon">
-              <Menu className="h-5 w-5" />
+              <div>
+                <Menu className="h-5 w-5" />
+              </div>
             </Button>
           </SheetTrigger>
           <SheetContent side="left">
