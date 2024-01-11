@@ -125,14 +125,14 @@ export function MainNav() {
               </DropdownMenu>
               <SheetClose asChild>
                 <Link
-                  href={"/profile"}
+                  href={"/shop"}
                   className={cn(
                     "flex items-center font-medium text-muted-foreground",
-                    pathname === "/profile" && "text-foreground",
+                    pathname === "/shop" && "text-foreground",
                   )}
-                  onClick={() => setPathname("/profile")}
+                  onClick={() => setPathname("/shop")}
                 >
-                  Profil
+                  Shop
                 </Link>
               </SheetClose>
             </nav>
@@ -221,6 +221,16 @@ export function MainNav() {
             onClick={() => setPathname("/profile")}
           >
             Profil
+          </Link>
+          <Link
+            href={"/shop"}
+            className={cn(
+              "flex items-center font-medium text-muted-foreground",
+              pathname === "/shop" && "text-foreground",
+            )}
+            onClick={() => setPathname("/shop")}
+          >
+            Shop
           </Link>
         </nav>
       </div>

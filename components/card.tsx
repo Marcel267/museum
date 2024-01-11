@@ -17,7 +17,7 @@ export default function Card({
         height={height}
         src={src}
       />
-      <span className="flex flex-row flex-wrap justify-center text-sm md:text-base">
+      <span className="flex flex-row flex-wrap justify-center py-3 text-sm md:text-base">
         {desc}
       </span>
     </div>
