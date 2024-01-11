@@ -3,7 +3,12 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "./ui/button";
 
-export default function TicketCard({ product }: { product: Product }) {
+type Type = {
+  product: Product;
+  addArticle: (product: Product) => void;
+};
+
+export default function TicketCard({ product, addArticle }: Type) {
   return (
     <div className="max-w-fit rounded-lg border shadow dark:bg-muted">
       <Image
@@ -71,10 +76,10 @@ export default function TicketCard({ product }: { product: Product }) {
           </span>
         </div> */}
         <div className="flex items-center justify-between">
-          <span className="text-3xl font-bold text-gray-900 dark:text-white">
+          <span className="text-2xl font-bold text-gray-900 dark:text-white">
             {product.price} €
           </span>
-          <Button>Add to cart</Button>
+          <Button onClick={() => addArticle(product)}>Add to cart</Button>
         </div>
       </div>
     </div>

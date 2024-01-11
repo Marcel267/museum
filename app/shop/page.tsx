@@ -5,7 +5,5 @@ export default async function Shop() {
   const products = await prisma.product.findMany();
   console.log(products);
 
-  return (
-    <TicketShop products={products} />
-  );
+  return <TicketShop products={products} />;
 }

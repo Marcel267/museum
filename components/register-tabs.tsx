@@ -1,10 +1,10 @@
 "use client";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { Input } from "./ui/input";
 import { signIn } from "next-auth/react";
-import { buttonVariants } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 // import { useRouter } from "next/navigation";
 
@@ -43,6 +43,7 @@ const RegisterTabs = () => {
     password2: "",
   });
   const [loginError, setLoginError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [registerError, setRegisterError] = useState("");
   // const router = useRouter();
 
@@ -57,8 +58,9 @@ const RegisterTabs = () => {
 
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("handleRegister called");
-    console.log(registerForm);
+    setLoading(true);
+    // console.log("handleRegister called");
+    // console.log(registerForm);
     try {
       const res = await fetch(`/api/user`, {
         method: "POST",
@@ -67,17 +69,19 @@ const RegisterTabs = () => {
 
       if (res.ok) {
         // setIsAdding(false);
-        console.log("User angelegt");
+        // console.log("User angelegt");
         // window.location.href = "/";
         singIn(registerForm.email, registerForm.password1);
         setRegisterError("");
       } else {
         // console.error("Failed to add user:", res.status, res.body);
         setRegisterError("User konnte nicht angelegt werden");
+        console.log(res);
       }
-      console.log(res);
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -87,6 +91,7 @@ const RegisterTabs = () => {
   };
 
   async function singIn(email: string, password: string) {
+    setLoading(true);
     const result = await signIn("credentials", {
       redirect: false,
       callbackUrl: "/",
@@ -100,7 +105,8 @@ const RegisterTabs = () => {
     } else {
       console.log("Erfolgreich angemeldet:", result);
     }
-    console.log("handleSignIn called");
+    setLoading(false);
+    // console.log("handleSignIn called");
   }
 
   function handleLoginFormEvent(event: ChangeEvent<HTMLInputElement>) {
@@ -147,11 +153,18 @@ const RegisterTabs = () => {
           {loginError && (
             <div className="mt-2 text-destructive">Falsche Zugangsdaten</div>
           )}
-          <input
-            type="submit"
-            value="Login"
-            className={cn(buttonVariants(), "w-full sm:w-fit")}
-          />
+          {loading ? (
+            <Button className="w-full sm:w-fit" disabled>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Please wait
+            </Button>
+          ) : (
+            <input
+              type="submit"
+              value="Login"
+              className={cn(buttonVariants(), "w-full sm:w-fit")}
+            />
+          )}
         </form>
       </TabsContent>
       <TabsContent value="registrieren">
@@ -206,12 +219,20 @@ const RegisterTabs = () => {
           {registerError.length > 0 && (
             <div className="mt-2 text-destructive">{registerError}</div>
           )}
-          <input
-            hidden
-            type="submit"
-            value="Registrieren"
-            className={cn(buttonVariants(), "mt-3 w-full sm:w-fit")}
-          />
+
+          {loading ? (
+            <Button className="w-full sm:w-fit" disabled>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Please wait
+            </Button>
+          ) : (
+            <input
+              hidden
+              type="submit"
+              value="Registrieren"
+              className={cn(buttonVariants(), "mt-3 w-full sm:w-fit")}
+            />
+          )}
         </form>
       </TabsContent>
     </Tabs>
