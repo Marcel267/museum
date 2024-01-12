@@ -1,3 +1,5 @@
+import { Product } from "@prisma/client";
+
 type Card = {
   src: StaticImageData;
   alt: string;
@@ -5,3 +7,5 @@ type Card = {
   width?: number;
   height?: number;
 };
+
+type Product = Product & { count?: number };
