@@ -21,6 +21,12 @@ export default function TicketShop({ products }: { products: Product[] }) {
         0,
       );
       setArticleCount(totalCount);
+
+      const totalSum = updatedCart.reduce(
+        (sum, cartItem) => sum + cartItem.price * (cartItem.count || 0),
+        0,
+      );
+      setArticleSum(totalSum);
       // console.log(articleCount);
       return updatedCart; // Return the updatedCart to complete the state update
     });
