@@ -90,8 +90,6 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
                   </span>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
-                  {/* <DropdownMenuSeparator /> */}
                   <DropdownMenuGroup>
                     <SheetClose asChild>
                       <Link
@@ -146,7 +144,6 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
                 </div>
               </SheetClose>
             </nav>
-            {/* </div> */}
           </SheetContent>
         </Sheet>
       </div>

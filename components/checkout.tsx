@@ -76,9 +76,8 @@ export default function Checkout({ articleSum, cart, setCart }: Type) {
         setCreateOrderError("");
         // setCart([]);
       } else {
-        // console.error("Failed to add user:", res.status, res.body);
         setCreateOrderError("Bestellung konnte nicht angelegt werden");
-        console.log(res);
+        console.error("Failed to add order:", res.status, res.body);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -111,9 +110,6 @@ export default function Checkout({ articleSum, cart, setCart }: Type) {
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
-                    {/* <FormDescription>
-                        This is your public display name.
-                      </FormDescription> */}
                     <FormMessage />
                   </FormItem>
                 )}

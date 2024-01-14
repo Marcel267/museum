@@ -25,7 +25,7 @@ export default function TicketCard({ product, addArticle }: Type) {
         <p className="my-3 text-muted-foreground">
           {/* {product.description} */}
         </p>
-        {/* <div className="mb-5 mt-2.5 flex items-center">
+        <div className="mb-5 mt-2.5 flex items-center">
           <div className="flex items-center space-x-1 rtl:space-x-reverse">
             <svg
               className="h-4 w-4 text-yellow-300"
@@ -76,7 +76,7 @@ export default function TicketCard({ product, addArticle }: Type) {
           <span className="ml-2 inline-flex items-center rounded-md border border-transparent bg-primary px-2.5 py-0.5 text-xs font-semibold text-primary-foreground shadow transition-colors hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
             5.0
           </span>
-        </div> */}
+        </div>
         <div className="flex items-center justify-between">
           <span className="text-2xl font-bold text-gray-900 dark:text-white">
             {product.price} €

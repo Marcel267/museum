@@ -20,5 +20,5 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Todos
 
-- auf kauf, order
+- auf kauf, order erstellen
 - input auf cart fixen

@@ -12,8 +12,6 @@ export default function TicketShop({ products }: { products: Product[] }) {
 
   function updateArticleCountAndSum() {
     setCart((updatedCart) => {
-      // console.log("cart", updatedCart);
-
       const totalCount = updatedCart.reduce(
         (sum, cartItem) => sum + (cartItem.count || 0),
         0,
@@ -56,7 +54,7 @@ export default function TicketShop({ products }: { products: Product[] }) {
         product.count = 1;
         setCart((prevCart) => [...prevCart, product]);
       } else {
-        // if product is already in the cart, increment count
+        // if product is already in cart, increment count
         setCart((prevCart) => [
           ...prevCart.slice(0, existingProductIndex),
           {

@@ -6,12 +6,6 @@ import { Input } from "./ui/input";
 import { signIn } from "next-auth/react";
 import { Button, buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
-// import { useRouter } from "next/navigation";
-
-// type LoginFormType = {
-//   email: string;
-//   password: string;
-// };
 
 const EyeClosed = ({
   togglePasswordVisibility,
@@ -45,7 +39,6 @@ const RegisterTabs = () => {
   const [loginError, setLoginError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [registerError, setRegisterError] = useState("");
-  // const router = useRouter();
 
   const togglePasswordVisibility = (fieldName: string) => {
     if (fieldName === "showPassword1" || fieldName === "showPassword2") {
@@ -59,8 +52,7 @@ const RegisterTabs = () => {
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // console.log("handleRegister called");
-    // console.log(registerForm);
+
     try {
       const res = await fetch(`/api/user`, {
         method: "POST",
@@ -68,13 +60,9 @@ const RegisterTabs = () => {
       });
 
       if (res.ok) {
-        // setIsAdding(false);
-        // console.log("User angelegt");
-        // window.location.href = "/";
         singIn(registerForm.email, registerForm.password1);
         setRegisterError("");
       } else {
-        // console.error("Failed to add user:", res.status, res.body);
         setRegisterError("User konnte nicht angelegt werden");
         console.log(res);
       }
@@ -122,7 +110,6 @@ const RegisterTabs = () => {
       console.log("Erfolgreich angemeldet:", result);
     }
     setLoading(false);
-    // console.log("handleSignIn called");
   }
 
   function handleLoginFormEvent(event: ChangeEvent<HTMLInputElement>) {

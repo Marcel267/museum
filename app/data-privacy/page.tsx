@@ -14,8 +14,8 @@ export default function AboutUs() {
         <p className="mb-4">
           Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und
           Zweck der Verarbeitung von personenbezogenen Daten (nachfolgend kurz
-            &quot;Daten&quot;) im Rahmen der Nutzung unserer Website sowie der damit
-          verbundenen Funktionen und Inhalte auf.
+          &quot;Daten&quot;) im Rahmen der Nutzung unserer Website sowie der
+          damit verbundenen Funktionen und Inhalte auf.
         </p>
         <br />
         <h2 className="mb-2 text-xl font-bold">1. Verantwortliche Stelle</h2>
