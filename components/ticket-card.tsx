@@ -22,7 +22,9 @@ export default function TicketCard({ product, addArticle }: Type) {
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
           {product.name}
         </h5>
-        <p className="my-3 text-muted-foreground">{product.description}</p>
+        <p className="my-3 text-muted-foreground">
+          {/* {product.description} */}
+        </p>
         {/* <div className="mb-5 mt-2.5 flex items-center">
           <div className="flex items-center space-x-1 rtl:space-x-reverse">
             <svg

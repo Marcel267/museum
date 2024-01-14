@@ -23,3 +23,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 - github login auf eigenem modal hinzufügen (und dann evt. nur eigenes modal benutzen anstatt nextauth login-seite)
 - ticketbestellsystem? (stripe)
 - code refactoren/polieren
+
+- auf kauf order erstellen
+- orderseite bauen?
+- input auf cart fixen?

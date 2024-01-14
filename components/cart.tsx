@@ -15,6 +15,8 @@ import { ShoppingCart, Trash2 } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { useLayoutEffect, useState } from "react";
 import { Product } from "@/types";
+import { useRouter } from "next/navigation";
+import Checkout from "./checkout";
 
 type Type = {
   cart: Product[];
@@ -29,21 +31,30 @@ export default function Cart({
   articleCount,
   articleSum,
 }: Type) {
-  const [uniqueArticles, setUniqueArticles] = useState<Product[]>([]);
+  // const [uniqueArticles, setUniqueArticles] = useState<Product[]>([]);
 
-  useLayoutEffect(() => {
-    if (cart.length > 0) {
-      cart.forEach((cartItem) => {
-        const isDuplicate = uniqueArticles.some(
-          (uniqueArticle: Product) => uniqueArticle.id === cartItem.id,
-        );
+  // useLayoutEffect(() => {
+  //   if (cart.length > 0) {
+  //     cart.forEach((cartItem) => {
+  //       const isDuplicate = uniqueArticles.some(
+  //         (uniqueArticle: Product) => uniqueArticle.id === cartItem.id,
+  //       );
 
-        if (!isDuplicate) {
-          setUniqueArticles((prev: Product[]) => [...prev, cartItem]);
-        }
-      });
-    }
-  }, [cart]);
+  //       if (!isDuplicate) {
+  //         setUniqueArticles((prev: Product[]) => [...prev, cartItem]);
+  //       }
+  //     });
+  //   }
+  // }, [cart]);
+
+  // const router = useRouter();
+
+  // function handleCheckout() {
+  //   router.push(
+  //     "/shop/checkout",
+  //     // query: { objects: JSON.stringify(cart) },
+  //   );
+  // }
 
   // console.log("uniqueArticles ", uniqueArticles);
 
@@ -113,16 +124,16 @@ export default function Cart({
               );
             })}
           </div>
-          <footer className="mb-8 flex flex-col  gap-4 rounded-md p-4 text-lg font-semibold text-foreground">
+          <footer className="mb-8 flex flex-col gap-4 rounded-md p-4 text-lg font-semibold text-foreground">
             <span className="flex justify-between">
               Gesamtpreis: <span>{articleSum} €</span>
             </span>
-            {articleSum > 0 ? (
+            {articleSum == 0 ? (
               <>
-                <Button>Bezahlen</Button>
+                <Button disabled>Checkout</Button>
               </>
             ) : (
-              <Button disabled>Bezahlen</Button>
+              <Checkout cart={cart} />
             )}
           </footer>
         </div>

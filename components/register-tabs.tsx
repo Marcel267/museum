@@ -1,7 +1,7 @@
 "use client";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { Eye, EyeOff, Github, Loader2 } from "lucide-react";
 import { Input } from "./ui/input";
 import { signIn } from "next-auth/react";
 import { Button, buttonVariants } from "./ui/button";
@@ -90,6 +90,22 @@ const RegisterTabs = () => {
     singIn(loginForm.email, loginForm.password);
   };
 
+  const handleGithubSignIn = async (e: FormEvent) => {
+    e.preventDefault();
+    const result = await signIn("github", {
+      redirect: false,
+      callbackUrl: "/",
+    });
+
+    if (result?.error) {
+      console.error("Fehler bei Anmeldung:", result.error);
+      setLoginError(true);
+    } else {
+      console.log("Erfolgreich angemeldet:", result);
+    }
+    setLoading(false);
+  };
+
   async function singIn(email: string, password: string) {
     setLoading(true);
     const result = await signIn("credentials", {
@@ -166,6 +182,14 @@ const RegisterTabs = () => {
             />
           )}
         </form>
+        <Button
+          onClick={handleGithubSignIn}
+          variant="secondary"
+          className="mt-8 w-full"
+        >
+          <Github className="mr-2 h-4 w-4" />
+          Github
+        </Button>
       </TabsContent>
       <TabsContent value="registrieren">
         <form onSubmit={handleRegister} className="flex-col space-y-3 pt-3">

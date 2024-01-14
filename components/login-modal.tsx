@@ -7,12 +7,15 @@ import {
 } from "@/components/ui/dialog";
 import RegisterTabs from "@/components/register-tabs";
 import CustomAvatar from "@/components/customAvatar";
+import React from "react";
 
-export default function LoginModal() {
+const LoginModal = React.forwardRef(function LoginModal(props: any, ref: any) {
   return (
     <Dialog>
       <DialogTrigger>
-        <CustomAvatar />
+        <div ref={ref}>
+          <CustomAvatar />
+        </div>
       </DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>
@@ -23,4 +26,6 @@ export default function LoginModal() {
       </DialogContent>
     </Dialog>
   );
-}
+});
+
+export default LoginModal;
