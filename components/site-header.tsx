@@ -48,11 +48,10 @@ export function SiteHeader() {
                     </DropdownMenuItem>
                   </Link>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <LogOut
-                      onClick={() => signOut({ callbackUrl: "/" })}
-                      className="mr-2 h-4 w-4"
-                    />
+                  <DropdownMenuItem
+                    onClick={() => signOut({ callbackUrl: "/" })}
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
                     <span>Log out</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
