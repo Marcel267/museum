@@ -10,16 +10,6 @@ export default function ExhibitionAndEvents() {
       <h1 className="mb-5 text-3xl">Austellungen</h1>
       <div className="mb-10 flex items-center justify-center">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-20">
-          {/* <div>
-            <Image
-              className="rounded-md"
-              alt="Museumsgebäude"
-              width={250}
-              // height={200}
-              src={buildingPic}
-            />
-            <span className="flex justify-center">Jungsteinzeit</span>
-          </div> */}
           {ExhibitionConfig.cards.map((card) => {
             return (
               <Card

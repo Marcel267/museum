@@ -1,28 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ShoppingCart, Trash2 } from "lucide-react";
 import { Badge } from "./ui/badge";
-import { useLayoutEffect, useState } from "react";
-import { Product } from "@/types";
-import { useRouter } from "next/navigation";
 import Checkout from "./checkout";
+import { Product } from "@prisma/client";
 
 type Type = {
   cart: Product[];
   deleteArticle: (product: Product) => void;
   articleCount: number;
   articleSum: number;
+  setCart: (cart: Product[]) => void;
 };
 
 export default function Cart({
@@ -30,34 +25,8 @@ export default function Cart({
   deleteArticle,
   articleCount,
   articleSum,
+  setCart,
 }: Type) {
-  // const [uniqueArticles, setUniqueArticles] = useState<Product[]>([]);
-
-  // useLayoutEffect(() => {
-  //   if (cart.length > 0) {
-  //     cart.forEach((cartItem) => {
-  //       const isDuplicate = uniqueArticles.some(
-  //         (uniqueArticle: Product) => uniqueArticle.id === cartItem.id,
-  //       );
-
-  //       if (!isDuplicate) {
-  //         setUniqueArticles((prev: Product[]) => [...prev, cartItem]);
-  //       }
-  //     });
-  //   }
-  // }, [cart]);
-
-  // const router = useRouter();
-
-  // function handleCheckout() {
-  //   router.push(
-  //     "/shop/checkout",
-  //     // query: { objects: JSON.stringify(cart) },
-  //   );
-  // }
-
-  // console.log("uniqueArticles ", uniqueArticles);
-
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -74,19 +43,12 @@ export default function Cart({
           Einkaufswagen
         </Button>
       </SheetTrigger>
-      {/* <SheetContent> */}
       <SheetContent className="w-full sm:max-w-md">
-        {/* <SheetContent className="w-[400px] sm:w-[540px]"> */}
         <SheetHeader>
-          {/* <div className="flex space-y-2 text-center sm:text-left"> */}
           <SheetTitle className="flex items-center">
             <ShoppingCart className="mr-4 h-8 w-8" />
             Dein Einkaufswagen
           </SheetTitle>
-          {/* </div> */}
-          {/* <SheetDescription>
-            Make changes to your profile here. Click save when you're done.
-          </SheetDescription> */}
         </SheetHeader>
         <div className="flex h-full flex-col justify-between ">
           <div className="flex flex-col justify-between gap-4 pt-8">
@@ -110,7 +72,6 @@ export default function Cart({
                       value={cartItem.count}
                       className=" w-16"
                     />
-                    {/* <Input id="name" value="Pedro Duarte" className="col-span-2" /> */}
                     <Button
                       onClick={() => deleteArticle(cartItem)}
                       size="icon"
@@ -133,21 +94,10 @@ export default function Cart({
                 <Button disabled>Checkout</Button>
               </>
             ) : (
-              <Checkout cart={cart} />
+              <Checkout cart={cart} articleSum={articleSum} setCart={setCart} />
             )}
           </footer>
         </div>
-        {/* <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
-          </div> */}
-        {/* <SheetFooter > */}
-        {/* <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
-          </SheetClose> */}
-        {/* </SheetFooter> */}
       </SheetContent>
     </Sheet>
   );

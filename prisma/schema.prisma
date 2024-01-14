@@ -17,6 +17,7 @@ model User {
   name     String?
   password String
   orders   Order[]
+  street   String?
 }
 
 model Product {
@@ -30,12 +31,13 @@ model Product {
 }
 
 model Order {
-  id       Int       @id @default(autoincrement())
-  userId   Int
-  user     User      @relation(fields: [userId], references: [id])
-  products Product[]
-  status   Status    @default(PENDING)
-  // createdAt DateTime  @default(now())
+  id           Int          @id @default(autoincrement())
+  userId       Int
+  user         User         @relation(fields: [userId], references: [id])
+  products     Product[]
+  status       Status       @default(PENDING)
+  createdAt    DateTime     @default(now())
+  payingMethod PayingMethod @default(CARD)
 
   @@index([userId])
 }
@@ -45,4 +47,9 @@ enum Status {
   SHIPPED
   DELIVERED
   CANCELED
+}
+
+enum PayingMethod {
+  CARD
+  COD
 }

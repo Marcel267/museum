@@ -2,19 +2,17 @@
 
 import TicketCard from "./ticket-card";
 import Cart from "./cart";
-import { useLayoutEffect, useState } from "react";
-import { Product } from "@/types";
+import { useState } from "react";
+import { Product } from "@prisma/client";
 
 export default function TicketShop({ products }: { products: Product[] }) {
-  // console.log(products);
   const [cart, setCart] = useState<Product[]>([]);
   const [articleCount, setArticleCount] = useState(0);
   const [articleSum, setArticleSum] = useState(0);
 
   function updateArticleCountAndSum() {
-    // Use the callback provided by setCart to ensure you get the updated state
     setCart((updatedCart) => {
-      console.log("cart", updatedCart);
+      // console.log("cart", updatedCart);
 
       const totalCount = updatedCart.reduce(
         (sum, cartItem) => sum + (cartItem.count || 0),
@@ -27,8 +25,7 @@ export default function TicketShop({ products }: { products: Product[] }) {
         0,
       );
       setArticleSum(totalSum);
-      // console.log(articleCount);
-      return updatedCart; // Return the updatedCart to complete the state update
+      return updatedCart;
     });
   }
 
@@ -38,7 +35,6 @@ export default function TicketShop({ products }: { products: Product[] }) {
     );
 
     if (existingProductIndex !== -1) {
-      // If the product is found, remove the first occurrence
       setCart((prevCart) => [
         ...prevCart.slice(0, existingProductIndex),
         ...prevCart.slice(existingProductIndex + 1),
@@ -49,7 +45,6 @@ export default function TicketShop({ products }: { products: Product[] }) {
 
   function addArticle(product: Product) {
     if (cart.length <= 0) {
-      // If the cart is empty, set count to 1 and add the product
       product.count = 1;
       setCart([product]);
     } else {
@@ -58,11 +53,10 @@ export default function TicketShop({ products }: { products: Product[] }) {
       );
 
       if (existingProductIndex === -1) {
-        // If the product is not in the cart, set count to 1 and add it
         product.count = 1;
         setCart((prevCart) => [...prevCart, product]);
       } else {
-        // If the product is already in the cart, update its count
+        // if product is already in the cart, increment count
         setCart((prevCart) => [
           ...prevCart.slice(0, existingProductIndex),
           {
@@ -76,27 +70,6 @@ export default function TicketShop({ products }: { products: Product[] }) {
     updateArticleCountAndSum();
   }
 
-  // __________________________
-
-  // cart.forEach((cartItem: Product) => {
-  // const existingArticle = uniqueArticles.find(
-  //   (article) => article.id === product.id,
-  // );
-
-  // if (existingArticle) {
-  //   existingArticle.count = (existingArticle.count ?? 0) + 1;
-  // } else {
-  //   product.count = 1;
-  //   // uniqueArticlespush(product);
-  //   setCart([...uniqueArticles, product]);
-  // }
-  // });
-  // console.log("uniqueArticles ", uniqueArticles);
-
-  // Versuch: einfach produkt hinzufügen und manuell anzahl zählen
-  // setCart((prevCart) => [...prevCart, product]);
-  // }
-
   return (
     <>
       <div className="mb-5 flex flex-col justify-between sm:mb-0 sm:flex-row">
@@ -106,6 +79,7 @@ export default function TicketShop({ products }: { products: Product[] }) {
           cart={cart}
           articleCount={articleCount}
           articleSum={articleSum}
+          setCart={setCart}
         />
       </div>
       <div className="flex items-center justify-center">

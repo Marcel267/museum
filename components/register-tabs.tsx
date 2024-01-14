@@ -172,7 +172,7 @@ const RegisterTabs = () => {
           {loading ? (
             <Button className="w-full sm:w-fit" disabled>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Please wait
+              Bitte warten
             </Button>
           ) : (
             <input
@@ -247,7 +247,7 @@ const RegisterTabs = () => {
           {loading ? (
             <Button className="w-full sm:w-fit" disabled>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Please wait
+              Bitte warten
             </Button>
           ) : (
             <input

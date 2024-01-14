@@ -1,3 +1,3 @@
-import { Product } from "@prisma/client";
+// import { Product } from "@prisma/client";
 
-type Product = Product & { count?: number };
+// type Product = Product & { count?: number };
