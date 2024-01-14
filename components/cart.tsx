@@ -11,6 +11,7 @@ import { ShoppingCart, Trash2 } from "lucide-react";
 import { Badge } from "./ui/badge";
 import Checkout from "./checkout";
 import { Product } from "@prisma/client";
+import Image from "next/image";
 
 type Type = {
   cart: Product[];
@@ -58,9 +59,13 @@ export default function Cart({
               return (
                 <section key={cartItem.id} className="flex justify-between">
                   <div className="flex">
-                    <div className="h-15 w-20 rounded bg-white text-black">
-                      i
-                    </div>
+                    <Image
+                      width={50}
+                      height={25}
+                      className="h-15 aspect-video w-20 rounded object-cover"
+                      alt={`${cartItem.name}-Bild`}
+                      src={`/${cartItem.image}`}
+                    />
                     <div className="ml-2 flex flex-col sm:ml-4">
                       <span>{cartItem.name}</span>
                       <span className="text-xs text-muted-foreground">

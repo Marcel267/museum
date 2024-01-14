@@ -6,7 +6,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import RegisterTabs from "@/components/register-tabs";
-import CustomAvatar from "@/components/customAvatar";
+import CustomAvatar from "@/components/custom-avatar";
 import React from "react";
 
 const LoginModal = React.forwardRef(function LoginModal(props: any, ref: any) {
