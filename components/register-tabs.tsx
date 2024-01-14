@@ -1,17 +1,11 @@
 "use client";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Github, Loader2 } from "lucide-react";
 import { Input } from "./ui/input";
 import { signIn } from "next-auth/react";
-import { buttonVariants } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
-// import { useRouter } from "next/navigation";
-
-// type LoginFormType = {
-//   email: string;
-//   password: string;
-// };
 
 const EyeClosed = ({
   togglePasswordVisibility,
@@ -43,8 +37,8 @@ const RegisterTabs = () => {
     password2: "",
   });
   const [loginError, setLoginError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [registerError, setRegisterError] = useState("");
-  // const router = useRouter();
 
   const togglePasswordVisibility = (fieldName: string) => {
     if (fieldName === "showPassword1" || fieldName === "showPassword2") {
@@ -57,8 +51,8 @@ const RegisterTabs = () => {
 
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("handleRegister called");
-    console.log(registerForm);
+    setLoading(true);
+
     try {
       const res = await fetch(`/api/user`, {
         method: "POST",
@@ -66,18 +60,16 @@ const RegisterTabs = () => {
       });
 
       if (res.ok) {
-        // setIsAdding(false);
-        console.log("User angelegt");
-        // window.location.href = "/";
         singIn(registerForm.email, registerForm.password1);
         setRegisterError("");
       } else {
-        // console.error("Failed to add user:", res.status, res.body);
         setRegisterError("User konnte nicht angelegt werden");
+        console.log(res);
       }
-      console.log(res);
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -86,7 +78,24 @@ const RegisterTabs = () => {
     singIn(loginForm.email, loginForm.password);
   };
 
+  const handleGithubSignIn = async (e: FormEvent) => {
+    e.preventDefault();
+    const result = await signIn("github", {
+      redirect: false,
+      callbackUrl: "/",
+    });
+
+    if (result?.error) {
+      console.error("Fehler bei Anmeldung:", result.error);
+      setLoginError(true);
+    } else {
+      console.log("Erfolgreich angemeldet:", result);
+    }
+    setLoading(false);
+  };
+
   async function singIn(email: string, password: string) {
+    setLoading(true);
     const result = await signIn("credentials", {
       redirect: false,
       callbackUrl: "/",
@@ -100,7 +109,7 @@ const RegisterTabs = () => {
     } else {
       console.log("Erfolgreich angemeldet:", result);
     }
-    console.log("handleSignIn called");
+    setLoading(false);
   }
 
   function handleLoginFormEvent(event: ChangeEvent<HTMLInputElement>) {
@@ -147,12 +156,27 @@ const RegisterTabs = () => {
           {loginError && (
             <div className="mt-2 text-destructive">Falsche Zugangsdaten</div>
           )}
-          <input
-            type="submit"
-            value="Login"
-            className={cn(buttonVariants(), "w-full sm:w-fit")}
-          />
+          {loading ? (
+            <Button className="w-full sm:w-fit" disabled>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Bitte warten
+            </Button>
+          ) : (
+            <input
+              type="submit"
+              value="Login"
+              className={cn(buttonVariants(), "w-full sm:w-fit")}
+            />
+          )}
         </form>
+        <Button
+          onClick={handleGithubSignIn}
+          variant="secondary"
+          className="mt-8 w-full"
+        >
+          <Github className="mr-2 h-4 w-4" />
+          Github
+        </Button>
       </TabsContent>
       <TabsContent value="registrieren">
         <form onSubmit={handleRegister} className="flex-col space-y-3 pt-3">
@@ -206,12 +230,20 @@ const RegisterTabs = () => {
           {registerError.length > 0 && (
             <div className="mt-2 text-destructive">{registerError}</div>
           )}
-          <input
-            hidden
-            type="submit"
-            value="Registrieren"
-            className={cn(buttonVariants(), "mt-3 w-full sm:w-fit")}
-          />
+
+          {loading ? (
+            <Button className="w-full sm:w-fit" disabled>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Bitte warten
+            </Button>
+          ) : (
+            <input
+              hidden
+              type="submit"
+              value="Registrieren"
+              className={cn(buttonVariants(), "mt-3 w-full sm:w-fit")}
+            />
+          )}
         </form>
       </TabsContent>
     </Tabs>

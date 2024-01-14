@@ -19,18 +19,6 @@ export default function Profile() {
 
   return (
     <>
-      {/* {session ? ( */}
-      {/* <Link */}
-      {/* href="/api/auth/signout" */}
-      {/* className={buttonVariants({ variant: "destructive" })} */}
-      {/* > */}
-      {/* Signout */}
-      {/* </Link> */}
-      {/* ) : ( */}
-      {/* <div>not logged in</div> */}
-      {/* )} */}
-
-      {/* {status === "authenticated" && <p>Signed in as {session?.user?.email}</p>} */}
       <div className="flex-col space-y-3">
         <div>
           <span className="text-lg font-bold">Username</span>

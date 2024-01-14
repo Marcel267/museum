@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import calenderPic from "@/public/Oeffnungszeiten-2023-09.png";
-// import calenderPic from "@/public/kalender.png";
 
 export default function PricesAndHours() {
   return (

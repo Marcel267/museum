@@ -53,7 +53,8 @@ export default function AboutUs() {
         <br />
         <br />
         <h2 className="mb-2 text-xl font-bold">Datenschutz:</h2>
-        <h2>Unsere Datenschutzerklärung finden Sie {" "}
+        <h2>
+          Unsere Datenschutzerklärung finden Sie{" "}
           <a href="/data-privacy">
             <u>hier</u>
           </a>

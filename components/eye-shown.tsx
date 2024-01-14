@@ -1,11 +1,10 @@
-import { Eye } from 'lucide-react';
+import { Eye } from "lucide-react";
 
 const EyeShown = () => {
   return (
     <div className="flex items-center">
-        <Eye />
+      <Eye />
     </div>
-
   );
 };
 

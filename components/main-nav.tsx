@@ -12,7 +12,7 @@ import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import * as React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Landmark } from "lucide-react";
 import {
@@ -25,8 +25,10 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 
-export function MainNav() {
+const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
   const [pathname, setPathname] = React.useState(usePathname());
+  const router = useRouter();
+
   return (
     <>
       <div className="block sm:hidden">
@@ -88,8 +90,6 @@ export function MainNav() {
                   </span>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
-                  {/* <DropdownMenuSeparator /> */}
                   <DropdownMenuGroup>
                     <SheetClose asChild>
                       <Link
@@ -124,19 +124,26 @@ export function MainNav() {
                 </DropdownMenuContent>
               </DropdownMenu>
               <SheetClose asChild>
-                <Link
-                  href={"/profile"}
+                <div
                   className={cn(
-                    "flex items-center font-medium text-muted-foreground",
-                    pathname === "/profile" && "text-foreground",
+                    "flex cursor-pointer items-center font-medium text-muted-foreground",
+                    pathname === "/shop" && "text-foreground",
                   )}
-                  onClick={() => setPathname("/profile")}
+                  onClick={() => {
+                    if (props.session) {
+                      setPathname("/shop");
+                      router.push("/shop");
+                    } else {
+                      if (ref.current) {
+                        ref.current.click();
+                      }
+                    }
+                  }}
                 >
-                  Profil
-                </Link>
+                  Shop
+                </div>
               </SheetClose>
             </nav>
-            {/* </div> */}
           </SheetContent>
         </Sheet>
       </div>
@@ -212,18 +219,28 @@ export function MainNav() {
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Link
-            href={"/profile"}
+          <div
             className={cn(
-              "flex items-center font-medium text-muted-foreground",
-              pathname === "/profile" && "text-foreground",
+              "flex cursor-pointer items-center font-medium text-muted-foreground",
+              pathname === "/shop" && "text-foreground",
             )}
-            onClick={() => setPathname("/profile")}
+            onClick={() => {
+              if (props.session) {
+                setPathname("/shop");
+                router.push("/shop");
+              } else {
+                if (ref.current) {
+                  ref.current.click();
+                }
+              }
+            }}
           >
-            Profil
-          </Link>
+            Shop
+          </div>
         </nav>
       </div>
     </>
   );
-}
+});
+
+export default MainNav;
