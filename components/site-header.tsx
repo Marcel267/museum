@@ -44,7 +44,7 @@ export function SiteHeader() {
                   <Link href="/orders" className="">
                     <DropdownMenuItem>
                       <Table className="mr-2 h-4 w-4" />
-                      <span>Orders</span>
+                      <span>Bestellungen</span>
                     </DropdownMenuItem>
                   </Link>
                   <DropdownMenuSeparator />

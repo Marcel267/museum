@@ -35,6 +35,7 @@ model Order {
   user     User      @relation(fields: [userId], references: [id])
   products Product[]
   status   Status    @default(PENDING)
+  // createdAt DateTime  @default(now())
 
   @@index([userId])
 }
