@@ -78,6 +78,7 @@ export default function TicketShop({ products }: { products: Product[] }) {
           articleCount={articleCount}
           articleSum={articleSum}
           setCart={setCart}
+          updateArticleCountAndSum={updateArticleCountAndSum}
         />
       </div>
       <div className="flex items-center justify-center">

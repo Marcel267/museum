@@ -26,11 +26,13 @@ import { useRef, useState } from "react";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Product } from "@prisma/client";
 import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 type Type = {
   articleSum: number;
   cart: Product[];
   setCart: (cart: Product[]) => void;
+  updateArticleCountAndSum: () => void;
 };
 
 const formSchema = z.object({
@@ -40,7 +42,12 @@ const formSchema = z.object({
   payingMethod: z.enum(["CARD", "COD"]),
 });
 
-export default function Checkout({ articleSum, cart, setCart }: Type) {
+export default function Checkout({
+  articleSum,
+  cart,
+  setCart,
+  updateArticleCountAndSum,
+}: Type) {
   const { data: session } = useSession();
   const myRef = useRef<HTMLButtonElement>(null);
   const [loading, setLoading] = useState(false);
@@ -74,7 +81,9 @@ export default function Checkout({ articleSum, cart, setCart }: Type) {
 
       if (res.ok) {
         setCreateOrderError("");
-        // setCart([]);
+        setCart([]);
+        updateArticleCountAndSum();
+        toast.success("Bestellung erfolgreich");
       } else {
         setCreateOrderError("Bestellung konnte nicht angelegt werden");
         console.error("Failed to add order:", res.status, res.body);

@@ -18,6 +18,7 @@ type Type = {
   articleCount: number;
   articleSum: number;
   setCart: (cart: Product[]) => void;
+  updateArticleCountAndSum: () => void;
 };
 
 export default function Cart({
@@ -26,6 +27,7 @@ export default function Cart({
   articleCount,
   articleSum,
   setCart,
+  updateArticleCountAndSum,
 }: Type) {
   return (
     <Sheet>
@@ -94,7 +96,12 @@ export default function Cart({
                 <Button disabled>Checkout</Button>
               </>
             ) : (
-              <Checkout cart={cart} articleSum={articleSum} setCart={setCart} />
+              <Checkout
+                cart={cart}
+                articleSum={articleSum}
+                setCart={setCart}
+                updateArticleCountAndSum={updateArticleCountAndSum}
+              />
             )}
           </footer>
         </div>

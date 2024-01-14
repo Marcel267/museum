@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 import Provider from "@/app/context/client-provider";
 import { getServerSession } from "next-auth/next";
 import { options } from "./api/auth/[...nextauth]/options";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default async function RootLayout({
             <main className="container mx-auto min-h-[calc(100vh-122px)] p-5">
               {children}
             </main>
+            <Toaster position="bottom-left" />
             <Footer />
           </ThemeProvider>
         </Provider>
