@@ -3,16 +3,13 @@ import {
   Sheet,
   SheetContent,
   SheetClose,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import * as React from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Landmark } from "lucide-react";
 import {
@@ -21,12 +18,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuGroup,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 
 const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
-  const [pathname, setPathname] = React.useState(usePathname());
   const router = useRouter();
 
   return (
@@ -46,7 +40,7 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
                 <Link
                   href={"/"}
                   className="flex items-center space-x-2 pr-2 text-xl sm:text-base"
-                  onClick={() => setPathname("/")}
+                  onClick={() => props.setPathname("/")}
                 >
                   <Landmark className="h-6 w-6" />
                   <span className="inline-block font-bold">Moroseum</span>
@@ -57,9 +51,9 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
                   href={"/"}
                   className={cn(
                     "flex items-center font-medium text-muted-foreground",
-                    pathname === "/" && "text-foreground",
+                    props.pathname === "/" && "text-foreground",
                   )}
-                  onClick={() => setPathname("/")}
+                  onClick={() => props.setPathname("/")}
                 >
                   Home
                 </Link>
@@ -69,9 +63,9 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
                   href={"/about-us"}
                   className={cn(
                     "flex items-center font-medium text-muted-foreground",
-                    pathname === "/about-us" && "text-foreground",
+                    props.pathname === "/about-us" && "text-foreground",
                   )}
-                  onClick={() => setPathname("/about-us")}
+                  onClick={() => props.setPathname("/about-us")}
                 >
                   Über uns
                 </Link>
@@ -81,8 +75,8 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
                   <span
                     className={cn(
                       "flex cursor-pointer items-center font-medium text-muted-foreground",
-                      (pathname === "/exhibition-and-events" ||
-                        pathname === "/prices-and-hours") &&
+                      (props.pathname === "/exhibition-and-events" ||
+                        props.pathname === "/prices-and-hours") &&
                         "text-foreground",
                     )}
                   >
@@ -96,10 +90,12 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
                         href={"/exhibition-and-events"}
                         className={cn(
                           "flex items-center font-medium text-muted-foreground",
-                          pathname === "/exhibition-and-events" &&
+                          props.pathname === "/exhibition-and-events" &&
                             "text-foreground",
                         )}
-                        onClick={() => setPathname("/exhibition-and-events")}
+                        onClick={() =>
+                          props.setPathname("/exhibition-and-events")
+                        }
                       >
                         <DropdownMenuItem className="w-full">
                           Austellungen & Veranstaltungen
@@ -111,9 +107,10 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
                         href={"/prices-and-hours"}
                         className={cn(
                           "flex items-center font-medium text-muted-foreground",
-                          pathname === "/prices-and-hours" && "text-foreground",
+                          props.pathname === "/prices-and-hours" &&
+                            "text-foreground",
                         )}
-                        onClick={() => setPathname("/prices-and-hours")}
+                        onClick={() => props.setPathname("/prices-and-hours")}
                       >
                         <DropdownMenuItem className="w-full">
                           Preise & Öffnungszeiten
@@ -127,11 +124,11 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
                 <div
                   className={cn(
                     "flex cursor-pointer items-center font-medium text-muted-foreground",
-                    pathname === "/shop" && "text-foreground",
+                    props.pathname === "/shop" && "text-foreground",
                   )}
                   onClick={() => {
                     if (props.session) {
-                      setPathname("/shop");
+                      props.setPathname("/shop");
                       router.push("/shop");
                     } else {
                       if (ref.current) {
@@ -152,7 +149,7 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
           <Link
             href={"/"}
             className="flex items-center space-x-2 pr-2 text-xl sm:text-base"
-            onClick={() => setPathname("/")}
+            onClick={() => props.setPathname("/")}
           >
             <Landmark className="h-6 w-6" />
             <span className="inline-block font-bold">Moroseum</span>
@@ -161,9 +158,9 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
             href={"/"}
             className={cn(
               "flex items-center font-medium text-muted-foreground",
-              pathname === "/" && "text-foreground",
+              props.pathname === "/" && "text-foreground",
             )}
-            onClick={() => setPathname("/")}
+            onClick={() => props.setPathname("/")}
           >
             Home
           </Link>
@@ -171,9 +168,9 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
             href={"/about-us"}
             className={cn(
               "flex items-center font-medium text-muted-foreground",
-              pathname === "/about-us" && "text-foreground",
+              props.pathname === "/about-us" && "text-foreground",
             )}
-            onClick={() => setPathname("/about-us")}
+            onClick={() => props.setPathname("/about-us")}
           >
             Über uns
           </Link>
@@ -182,8 +179,8 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
               <span
                 className={cn(
                   "flex cursor-pointer items-center font-medium text-muted-foreground",
-                  (pathname === "/exhibition-and-events" ||
-                    pathname === "/prices-and-hours") &&
+                  (props.pathname === "/exhibition-and-events" ||
+                    props.pathname === "/prices-and-hours") &&
                     "text-foreground",
                 )}
               >
@@ -196,9 +193,10 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
                   href={"/exhibition-and-events"}
                   className={cn(
                     "flex items-center font-medium text-muted-foreground",
-                    pathname === "/exhibition-and-events" && "text-foreground",
+                    props.pathname === "/exhibition-and-events" &&
+                      "text-foreground",
                   )}
-                  onClick={() => setPathname("/exhibition-and-events")}
+                  onClick={() => props.setPathname("/exhibition-and-events")}
                 >
                   <DropdownMenuItem className="w-full">
                     Austellungen & Veranstaltungen
@@ -208,9 +206,9 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
                   href={"/prices-and-hours"}
                   className={cn(
                     "flex items-center font-medium text-muted-foreground",
-                    pathname === "/prices-and-hours" && "text-foreground",
+                    props.pathname === "/prices-and-hours" && "text-foreground",
                   )}
-                  onClick={() => setPathname("/prices-and-hours")}
+                  onClick={() => props.setPathname("/prices-and-hours")}
                 >
                   <DropdownMenuItem className="w-full">
                     Preise & Öffnungszeiten
@@ -222,11 +220,11 @@ const MainNav = React.forwardRef(function MainNav(props: any, ref: any) {
           <div
             className={cn(
               "flex cursor-pointer items-center font-medium text-muted-foreground",
-              pathname === "/shop" && "text-foreground",
+              props.pathname === "/shop" && "text-foreground",
             )}
             onClick={() => {
               if (props.session) {
-                setPathname("/shop");
+                props.setPathname("/shop");
                 router.push("/shop");
               } else {
                 if (ref.current) {

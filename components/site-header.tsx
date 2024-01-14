@@ -15,15 +15,22 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { usePathname } from "next/navigation";
 
 export function SiteHeader() {
   const { data: session, status } = useSession();
   const ref = useRef<HTMLElement>(null);
+  const [pathname, setPathname] = React.useState(usePathname());
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-        <MainNav session={session} ref={ref} />
+        <MainNav
+          session={session}
+          ref={ref}
+          setPathname={setPathname}
+          pathname={pathname}
+        />
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
             {session ? (
@@ -34,13 +41,21 @@ export function SiteHeader() {
                 <DropdownMenuContent>
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <Link href="/profile" className="">
+                  <Link
+                    href="/profile"
+                    className=""
+                    onClick={() => setPathname("/profile")}
+                  >
                     <DropdownMenuItem>
                       <User className="mr-2 h-4 w-4" />
                       <span>Profil</span>
                     </DropdownMenuItem>
                   </Link>
-                  <Link href="/orders" className="">
+                  <Link
+                    href="/orders"
+                    className=""
+                    onClick={() => setPathname("/orders")}
+                  >
                     <DropdownMenuItem>
                       <Table className="mr-2 h-4 w-4" />
                       <span>Bestellungen</span>
