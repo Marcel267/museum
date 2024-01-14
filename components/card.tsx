@@ -1,21 +1,13 @@
 import Image, { StaticImageData } from "next/image";
 import React from "react";
 
-type Card = {
-  src: StaticImageData;
-  alt: string;
-  desc: string;
-  width?: number;
-  height?: number;
-};
-
 export default function Card({
   src,
   alt,
   desc,
   width = 250,
   height = 250,
-}: Card) {
+}: CardType) {
   return (
     <div className="max-w-[250px]">
       <Image

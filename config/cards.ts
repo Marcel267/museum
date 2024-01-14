@@ -8,11 +8,11 @@ import unterwasserwelten from "../public/unterwasserwelten.jpg";
 import virtual from "../public/virtual.png";
 
 type ExhibitionConfig = {
-  cards: Card[];
+  cards: CardType[];
 };
 
 type EventsConfig = {
-  cards: Card[];
+  cards: CardType[];
 };
 
 export const ExhibitionConfig: ExhibitionConfig = {
