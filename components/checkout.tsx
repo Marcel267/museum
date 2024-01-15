@@ -107,9 +107,9 @@ export default function Checkout({
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle className="mb-4">Lieferadresse</AlertDialogTitle>
+          <AlertDialogTitle className="mb-2">Lieferadresse</AlertDialogTitle>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
               <FormField
                 control={form.control}
                 name="username"
@@ -183,7 +183,7 @@ export default function Checkout({
                   </FormItem>
                 )}
               />
-              <div className="p-4 text-lg font-semibold ">
+              <div className="p-2 text-lg font-semibold ">
                 <span className="flex justify-between">
                   Gesamtpreis: <span>{articleSum} €</span>
                 </span>
