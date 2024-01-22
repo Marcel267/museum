@@ -74,7 +74,7 @@ export default function TicketCard({ product, addArticle }: Type) {
             </svg>
           </div>
           <span className="ml-2 inline-flex items-center rounded-md border border-transparent bg-primary px-2.5 py-0.5 text-xs font-semibold text-primary-foreground shadow transition-colors hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
-            5.0
+            4.0
           </span>
         </div>
         <div className="flex items-center justify-between">

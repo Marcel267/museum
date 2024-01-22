@@ -74,11 +74,11 @@ export default function Cart({
                     </div>
                   </div>
                   <div className="flex items-center gap-2 sm:gap-4">
-                    <Input
+                    {/* <Input
                       type="number"
                       value={cartItem.count}
                       className=" w-16"
-                    />
+                    /> */}
                     <Button
                       onClick={() => deleteArticle(cartItem)}
                       size="icon"

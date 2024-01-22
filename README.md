@@ -20,5 +20,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Todos
 
-- auf kauf, order erstellen
+- total zu order hinzufügen
 - input auf cart fixen
+- Account löschen auf profilseite
+- pro session acc mit logindaten erstellen und nach gewisser zeit wieder löschen?

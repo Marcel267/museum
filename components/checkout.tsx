@@ -67,7 +67,7 @@ export default function Checkout({
 
     setLoading(true);
     try {
-      const res = await fetch(`/api/order`, {
+      const res = await fetch(`/api/orders`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -97,7 +97,7 @@ export default function Checkout({
     if (myRef.current) {
       myRef.current.click();
     }
-    console.log(values);
+    // console.log(values);
   }
 
   return (
