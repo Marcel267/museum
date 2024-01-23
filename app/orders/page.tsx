@@ -49,7 +49,7 @@ export default async function Orders() {
         <TableBody>
           {orders.map((order) => {
             return (
-              <TableRow>
+              <TableRow key={order.id}>
                 <TableCell className="font-medium">1</TableCell>
                 <TableCell>
                   <ol>
@@ -72,8 +72,8 @@ export default async function Orders() {
                     </Badge>
                   )}
                 </TableCell>
-                <TableCell>{order.createdAt.toLocaleString('de-DE')}</TableCell>
-                <TableCell className="text-right">1234 €</TableCell>
+                <TableCell>{order.createdAt.toLocaleString("de-DE")}</TableCell>
+                <TableCell className="text-right">{order.total} €</TableCell>
               </TableRow>
             );
           })}

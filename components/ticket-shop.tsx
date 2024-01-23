@@ -22,7 +22,7 @@ export default function TicketShop({ products }: { products: Product[] }) {
         (sum, cartItem) => sum + cartItem.price * (cartItem.count || 0),
         0,
       );
-      setArticleSum(totalSum);
+      setArticleSum(Math.round((totalSum + Number.EPSILON) * 100) / 100);
       return updatedCart;
     });
   }

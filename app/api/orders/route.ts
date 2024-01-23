@@ -8,7 +8,8 @@ export async function POST(request: any) {
     const params: any = await request.json();
     const formData = JSON.parse(params.formData);
     const cart = JSON.parse(params.cart);
-    console.log(cart);
+    const articleSum = params.articleSum;
+    // console.log(typeof articleSum);
     const user = await prisma.user.findUnique({
       where: {
         email: formData.email,
@@ -27,6 +28,7 @@ export async function POST(request: any) {
         },
         status: Status.DELIVERED,
         payingMethod: formData.payingMethod as PayingMethod,
+        total: articleSum,
       },
     });
 

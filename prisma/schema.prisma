@@ -38,6 +38,7 @@ model Order {
   status       Status       @default(PENDING)
   createdAt    DateTime     @default(now())
   payingMethod PayingMethod @default(CARD)
+  total        Float
 
   @@index([userId])
 }
