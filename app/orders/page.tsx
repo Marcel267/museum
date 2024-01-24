@@ -17,15 +17,9 @@ import prisma from "@/lib/prisma";
 export default async function Orders() {
   const session = await getServerSession(options);
 
-  const user = await prisma.user.findUnique({
-    where: {
-      email: session?.user?.email!,
-    },
-  });
-
   const orders = await prisma.order.findMany({
     where: {
-      userId: user!.id,
+      userId: session?.user?.id,
     },
     include: {
       products: true,
@@ -54,7 +48,7 @@ export default async function Orders() {
                 <TableCell>
                   <ol>
                     {order.products.map((product) => {
-                      return <li>{product.name}</li>;
+                      return <li key={product.id}>{product.name}</li>;
                     })}
                   </ol>
                 </TableCell>

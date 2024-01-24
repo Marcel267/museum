@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma";
 export async function POST(request: any) {
   try {
     const params: any = await request.json();
-    console.log(params);
+
     const createdUser = await prisma.user.create({
       data: {
         email: params.email,

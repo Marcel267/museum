@@ -6,6 +6,7 @@ import erwachsenenabend from "../public/erwachsenenabend.png";
 import dinosaur from "../public/dinosaur.jpg";
 import unterwasserwelten from "../public/unterwasserwelten.jpg";
 import virtual from "../public/virtual.png";
+import { CardType } from "@/types";
 
 type ExhibitionConfig = {
   cards: CardType[];

@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import buildingPic from "../../../public/gebaeude_wasser1.jpg";
 import Card from "@/components/card";
 import { ExhibitionConfig, EventsConfig } from "@/config/cards";
 

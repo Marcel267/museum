@@ -21,6 +21,5 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## Todos
 
 - input auf cart fixen
-- Account löschen auf profilseite
 - pro session acc mit logindaten erstellen und nach gewisser zeit wieder löschen?
 - auf acc erstellung: pw hashen und felder vergleichen

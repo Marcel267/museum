@@ -51,6 +51,7 @@ export default function Checkout({
   const { data: session } = useSession();
   const myRef = useRef<HTMLButtonElement>(null);
   const [loading, setLoading] = useState(false);
+  // @TODO: use createOrderError
   const [createOrderError, setCreateOrderError] = useState("");
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -67,7 +68,7 @@ export default function Checkout({
 
     setLoading(true);
     try {
-      const res = await fetch(`/api/orders`, {
+      const res = await fetch(`/api/order`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -97,7 +98,6 @@ export default function Checkout({
     if (myRef.current) {
       myRef.current.click();
     }
-    // console.log(values);
   }
 
   return (

@@ -18,7 +18,7 @@ import {
 import { usePathname } from "next/navigation";
 
 export function SiteHeader() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const ref = useRef<HTMLElement>(null);
   const [pathname, setPathname] = React.useState(usePathname());
 

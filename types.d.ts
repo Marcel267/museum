@@ -1,6 +1,5 @@
-// import { Product } from "@prisma/client";
+import NextAuth from "next-auth";
 
-// type Product = Product & { count?: number };
 type CardType = {
   src: StaticImageData;
   alt: string;
@@ -8,3 +7,18 @@ type CardType = {
   width?: number;
   height?: number;
 };
+
+declare module "next-auth" {
+  /**
+   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+   */
+  interface Session {
+    user: {
+      id: number;
+      email: string;
+      name: string | null;
+      password: string;
+      street: string | null;
+    };
+  }
+}

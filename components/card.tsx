@@ -1,4 +1,5 @@
-import Image, { StaticImageData } from "next/image";
+import { CardType } from "@/types";
+import Image from "next/image";
 import React from "react";
 
 export default function Card({
